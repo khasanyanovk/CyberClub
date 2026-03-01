@@ -91,11 +91,13 @@ jobs:
       run: chmod +x ./tests/cyber-club-tests${{ matrix.test_ext }}
       shell: bash
     
-    - name: Run tests
-      run: ls -r
+    - name: Run tests (Windows)
+      if: runner.os == 'Windows'
+      run: ./tests/Release/cyber-club-tests${{ matrix.test_ext }}
       shell: bash
 
     - name: Run tests
+      if: runner.os != 'Windows'
       run: ./tests/cyber-club-tests${{ matrix.test_ext }}
       shell: bash
     
