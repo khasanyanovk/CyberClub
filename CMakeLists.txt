@@ -18,3 +18,8 @@ if(MSVC)
 else()
   target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror)
 endif()
+
+option(BUILD_TESTS "Build tests" ON)
+if(BUILD_TESTS)
+  add_subdirectory(tests)
+endif()
