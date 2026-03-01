@@ -18,7 +18,7 @@ public:
   virtual ~Event() = default;
 
   [[nodiscard]] TimePoint time() const { return time_; }
-  [[nodiscard]] int id() const { return id_; }
+  [[nodiscard]] uint8_t id() const { return id_; }
 
   [[nodiscard]] virtual std::string to_string() const = 0;
 };
