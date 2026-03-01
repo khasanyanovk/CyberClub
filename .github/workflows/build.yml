@@ -1,4 +1,4 @@
-name: Build
+name: Build and Test
 
 on:
   push:
@@ -17,10 +17,13 @@ jobs:
         include:
           - os: ubuntu-latest
             compiler: gcc
+            test_ext: ""
           - os: windows-latest
             compiler: msvc
+            test_ext: ".exe"
           - os: macos-latest
             compiler: clang
+            test_ext: ""
     
     steps:
     - name: Checkout code
@@ -33,11 +36,24 @@ jobs:
       run: cmake -B build -DCMAKE_BUILD_TYPE=Release
       shell: bash
     
-    - name: Build
-      run: cmake --build build --config Release
+    - name: Build main project
+      run: cmake --build build --config Release --target cyber-club
       shell: bash
     
-    - name: Upload artifacts
+    - name: Build tests
+      run: cmake --build build --config Release --target cyber-club-tests
+      shell: bash
+    
+    - name: Upload test executable
+      uses: actions/upload-artifact@v4
+      with:
+        name: tests-${{ matrix.os }}
+        path: |
+          build/tests/cyber-club-tests${{ matrix.test_ext }}
+          build/tests/Release/cyber-club-tests${{ matrix.test_ext }}
+        retention-days: 1
+    
+    - name: Upload main executable
       uses: actions/upload-artifact@v4
       with:
         name: cyber-club-${{ matrix.os }}
@@ -45,3 +61,40 @@ jobs:
           build/cyber-club*
           build/Release/cyber-club*
         if-no-files-found: ignore
+
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    needs: build
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            test_ext: ""
+          - os: windows-latest
+            test_ext: ".exe"
+          - os: macos-latest
+            test_ext: ""
+    
+    steps:
+    - name: Download test executable
+      uses: actions/download-artifact@v4
+      with:
+        name: tests-${{ matrix.os }}
+        path: ./tests
+    
+    - name: Set executable permissions (Unix)
+      if: runner.os != 'Windows'
+      run: chmod +x ./tests/cyber-club-tests${{ matrix.test_ext }}
+      shell: bash
+    
+    - name: Run tests
+      run: ./tests/cyber-club-tests${{ matrix.test_ext }}
+      shell: bash
+    
+    - name: Test Summary
+      if: always()
+      run: echo "Tests completed on ${{ matrix.os }}"
