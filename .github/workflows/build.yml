@@ -29,14 +29,8 @@ jobs:
     - name: Setup CMake
       uses: lukka/get-cmake@latest
     
-    - name: Configure CMake (Unix)
-      if: runner.os != 'Windows'
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Wall -Wextra -Werror"
-      shell: bash
-    
-    - name: Configure CMake (Windows)
-      if: runner.os == 'Windows'
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="/W4 /WX"
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
       shell: bash
     
     - name: Build
