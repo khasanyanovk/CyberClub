@@ -17,10 +17,10 @@ public:
 
   virtual ~Event() = default;
 
-  TimePoint time() const { return time_; }
-  int id() const { return id_; }
+  [[nodiscard]] TimePoint time() const { return time_; }
+  [[nodiscard]] int id() const { return id_; }
 
-  virtual std::string to_string() const = 0;
+  [[nodiscard]] virtual std::string to_string() const = 0;
 };
 
 using EventPtr = std::unique_ptr<Event>;

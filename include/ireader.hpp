@@ -12,7 +12,7 @@ public:
 
   virtual ~IReader() = default;
 
-  virtual ReadResult read() const = 0;
+  [[nodiscard]] virtual ReadResult read() const = 0;
 };
 
 #endif
