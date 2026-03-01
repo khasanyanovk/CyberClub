@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 
   std::vector<EventPtr> events;
   for (size_t i = start_line; i < lines.size(); ++i) {
-    auto event_result = parse_event(lines[i]);
+    auto event_result = Parser::parse_event(lines[i]);
 
     if (event_result.is_err()) {
       std::cerr << event_result.error() << std::endl;
