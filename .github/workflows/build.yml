@@ -92,6 +92,10 @@ jobs:
       shell: bash
     
     - name: Run tests
+      run: ls -r
+      shell: bash
+
+    - name: Run tests
       run: ./tests/cyber-club-tests${{ matrix.test_ext }}
       shell: bash
     
