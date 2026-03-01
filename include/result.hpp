@@ -11,6 +11,8 @@ private:
   std::optional<E> error_;
 
 public:
+  // Pass by value + move is better then reference when I want save value to
+  // class field
   static Result ok(T value) {
     Result result;
     result.value_ = std::move(value);
@@ -23,16 +25,16 @@ public:
     return result;
   }
 
-  bool is_ok() const { return value_.has_value(); }
-  bool is_err() const { return error_.has_value(); }
+  [[nodiscard]] bool is_ok() const { return value_.has_value(); }
+  [[nodiscard]] bool is_err() const { return error_.has_value(); }
 
-  const T &value() const { return value_.value(); }
-  T &value() { return value_.value(); }
+  [[nodiscard]] const T &value() const { return value_.value(); }
+  [[nodiscard]] T &value() { return value_.value(); }
 
-  const E &error() const { return error_.value(); }
-  E &error() { return error_.value(); }
+  [[nodiscard]] const E &error() const { return error_.value(); }
+  [[nodiscard]] E &error() { return error_.value(); }
 
-  T value_or(T defaultValue) const {
+  [[nodiscard]] T value_or(T defaultValue) const {
     return value_.value_or(std::move(defaultValue));
   }
 
