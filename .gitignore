@@ -39,3 +39,28 @@
 
 # debug information files
 *.dwo
+
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+CTestCustom.cmake
+.cache/
+*_autogen/
+*.cbp
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.useros
+*.userprefs
+*.userproject
+Makefile
+*.ninja
+build/
+cmake-build-*/
+install_manifest.txt
+*.swp
+*.swo
