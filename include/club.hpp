@@ -53,7 +53,7 @@ private:
 public:
   explicit Club(club_config config);
 
-  [[nodiscard]] std::vector<EventPtr> process_event(EventPtr event);
+  std::vector<EventPtr> process_event(EventPtr event);
   [[nodiscard]] std::vector<EventPtr> close_club();
   [[nodiscard]] const std::vector<table_stats> &get_stats() const {
     return stats_;
