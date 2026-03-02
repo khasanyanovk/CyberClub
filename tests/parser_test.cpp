@@ -1,4 +1,4 @@
-#include "parser.hpp"
+#include "domain/parser.hpp"
 #include <gtest/gtest.h>
 
 TEST(ParserTest, ParseTimeValid) {

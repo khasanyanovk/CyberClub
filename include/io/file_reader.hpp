@@ -1,7 +1,7 @@
 #ifndef _FILE_READER_HPP_
 #define _FILE_READER_HPP_
 
-#include "ireader.hpp"
+#include "io/ireader.hpp"
 #include <string>
 
 class FileReader : public IReader {

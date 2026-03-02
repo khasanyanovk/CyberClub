@@ -1,7 +1,7 @@
 #ifndef _IREADER_HPP_
 #define _IREADER_HPP_
 
-#include "result.hpp"
+#include "core/result.hpp"
 #include <string>
 #include <vector>
 

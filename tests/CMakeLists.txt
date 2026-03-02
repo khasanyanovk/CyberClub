@@ -13,8 +13,10 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-file(GLOB project_sources ../source/*.cpp)
+file(GLOB project_sources ../source/**/*.cpp)
 file(GLOB test_sources *.cpp)
+
+message(STATUS "[${PROJECT_NAME}-tests] -- Collected sources: ${test_sources} ${project_sources}")
 
 add_executable( ${PROJECT_NAME}-tests ${test_sources} ${project_sources})
 

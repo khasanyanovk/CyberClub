@@ -4,8 +4,7 @@ project(cyber-club)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(GLOB srcs source/*.cpp)
-file(GLOB hdrs include/*.hpp)
+file(GLOB srcs source/**/*.cpp)
 
 message(STATUS "[${PROJECT_NAME}] -- Collected sources: ${srcs}")
 

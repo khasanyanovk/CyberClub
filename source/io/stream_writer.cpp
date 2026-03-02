@@ -1,4 +1,4 @@
-#include "stream_writer.hpp"
+#include "io/stream_writer.hpp"
 
 StreamWriter::StreamWriter(std::ostream &stream) : stream_(stream) {}
 

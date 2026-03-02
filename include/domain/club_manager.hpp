@@ -1,11 +1,12 @@
 #ifndef _CLUB_MANAGER_HPP_
 #define _CLUB_MANAGER_HPP_
 
-#include "ireader.hpp"
-#include "iwriter.hpp"
-#include "result.hpp"
+#include "core/result.hpp"
+#include "io/ireader.hpp"
+#include "io/iwriter.hpp"
 #include <memory>
 #include <string>
+
 
 class ClubManager {
 private:

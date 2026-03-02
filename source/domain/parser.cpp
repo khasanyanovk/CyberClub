@@ -1,10 +1,11 @@
-#include "parser.hpp"
-#include "events.hpp"
-#include "validator.hpp"
+#include "domain/parser.hpp"
+#include "domain/validator.hpp"
+#include "events/events.hpp"
 #include <functional>
 #include <regex>
 #include <sstream>
 #include <unordered_map>
+
 
 Result<TimePoint, std::string> Parser::parse_time(const std::string &time_str) {
   std::regex time_regex(R"(^(\d{2}):(\d{2})$)");

@@ -1,4 +1,4 @@
-#include "file_reader.hpp"
+#include "io/file_reader.hpp"
 #include <fstream>
 
 FileReader::FileReader(std::string filename) : filename_(std::move(filename)) {}

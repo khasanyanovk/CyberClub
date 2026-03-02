@@ -1,15 +1,16 @@
 #ifndef _CLUB_HPP_
 #define _CLUB_HPP_
 
-#include "event.hpp"
-#include "parser.hpp"
-#include "time_point.hpp"
+#include "core/time_point.hpp"
+#include "domain/parser.hpp"
+#include "events/event.hpp"
 #include <deque>
 #include <map>
 #include <optional>
 #include <string>
 #include <unordered_map>
 #include <vector>
+
 
 struct table_stats {
   int total_minutes = 0;

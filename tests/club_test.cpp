@@ -1,5 +1,5 @@
-#include "club.hpp"
-#include "events.hpp"
+#include "domain/club.hpp"
+#include "events/events.hpp"
 #include <gtest/gtest.h>
 
 TEST(ClubTest, ConstructorInitializesCorrectly) {

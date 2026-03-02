@@ -1,4 +1,4 @@
-#include "time_point.hpp"
+#include "core/time_point.hpp"
 #include <gtest/gtest.h>
 
 TEST(TimePointTest, ConstructorAndGetters) {

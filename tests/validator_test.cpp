@@ -1,4 +1,4 @@
-#include "validator.hpp"
+#include "domain/validator.hpp"
 #include <gtest/gtest.h>
 
 TEST(ValidatorTest, ValidClientNames) {

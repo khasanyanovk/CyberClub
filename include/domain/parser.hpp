@@ -1,11 +1,12 @@
 #ifndef _PARSER_HPP_
 #define _PARSER_HPP_
 
-#include "event.hpp"
-#include "result.hpp"
-#include "time_point.hpp"
+#include "core/result.hpp"
+#include "core/time_point.hpp"
+#include "events/event.hpp"
 #include <string>
 #include <vector>
+
 
 struct club_config {
   int tables_count;

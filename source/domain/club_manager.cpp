@@ -1,6 +1,6 @@
-#include "club_manager.hpp"
-#include "club.hpp"
-#include "parser.hpp"
+#include "domain/club_manager.hpp"
+#include "domain/club.hpp"
+#include "domain/parser.hpp"
 #include <iomanip>
 #include <sstream>
 

@@ -1,6 +1,6 @@
-#include "club_manager.hpp"
-#include "file_reader.hpp"
-#include "stream_writer.hpp"
+#include "domain/club_manager.hpp"
+#include "io/file_reader.hpp"
+#include "io/stream_writer.hpp"
 #include <fstream>
 #include <iostream>
 #include <memory>

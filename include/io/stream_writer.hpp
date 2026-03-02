@@ -1,7 +1,7 @@
 #ifndef _STREAM_WRITER_HPP_
 #define _STREAM_WRITER_HPP_
 
-#include "iwriter.hpp"
+#include "io/iwriter.hpp"
 #include <ostream>
 
 class StreamWriter : public IWriter {
