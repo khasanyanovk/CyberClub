@@ -42,4 +42,33 @@ private:
   Result() = default;
 };
 
+template <typename E> class Result<void, E> {
+private:
+  bool is_ok_;
+  std::optional<E> error_;
+
+public:
+  static Result ok() {
+    Result result;
+    result.is_ok_ = true;
+    return result;
+  }
+
+  static Result err(E error) {
+    Result result;
+    result.is_ok_ = false;
+    result.error_ = std::move(error);
+    return result;
+  }
+
+  [[nodiscard]] bool is_ok() const { return is_ok_; }
+  [[nodiscard]] bool is_err() const { return !is_ok_; }
+
+  [[nodiscard]] const E &error() const { return error_.value(); }
+  [[nodiscard]] E &error() { return error_.value(); }
+
+private:
+  Result() : is_ok_(false) {}
+};
+
 #endif
