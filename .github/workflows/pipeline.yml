@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build, test and run
 
 on:
   push:
@@ -104,3 +104,49 @@ jobs:
     - name: Test Summary
       if: always()
       run: echo "Tests completed on ${{ matrix.os }}"
+
+  run-application:
+    name: Run application on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    needs: test
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            exe_ext: ""
+          - os: windows-latest
+            exe_ext: ".exe"
+          - os: macos-latest
+            exe_ext: ""
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Download executable
+      uses: actions/download-artifact@v4
+      with:
+        name: cyber-club-${{ matrix.os }}
+        path: ./app
+    
+    - name: Set executable permissions (Unix)
+      if: runner.os != 'Windows'
+      run: chmod +x ./app/cyber-club${{ matrix.exe_ext }}
+      shell: bash
+    
+    - name: Run application (Windows)
+      if: runner.os == 'Windows'
+      run: ./app/Release/cyber-club${{ matrix.exe_ext }} examples/test_input.txt
+      shell: bash
+    
+    - name: Run application (Unix)
+      if: runner.os != 'Windows'
+      run: ./app/cyber-club${{ matrix.exe_ext }} examples/test_input.txt
+      shell: bash
+    
+    - name: Application Summary
+      if: always()
+      run: echo "Application completed successfully on ${{ matrix.os }}"
