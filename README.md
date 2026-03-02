@@ -1,6 +1,6 @@
 # CyberClub
 
-An application for analyzing the effectiveness of a computer club.
+An application for analyzing the effectiveness of the computer club.
 
 ### Requirements
 - CMake 3.14+
